@@ -121,3 +121,16 @@ else {
     sections[0].classList.add('active')
     document.querySelector(`a[href="#${sections[0].id}"]`).classList.add('active')
 }
+
+// Form Submit
+var submitted = false;
+const gform = document.querySelector('#gform')
+const gform_next = document.querySelector('.form-next')
+gform.addEventListener('submit', function(e) {
+    gform.style.display = "none"
+    gform_next.style.display = "flex"
+});
+const hidden_iframe = document.querySelector('#hidden_iframe')
+hidden_iframe.addEventListener('onload', () => {
+    if(submitted) {}
+})

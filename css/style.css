@@ -21,6 +21,13 @@ body.dark {
     --overlay: #fff;
 }
 
+body.dark .contact-info-item .icon svg path{
+    fill: white;
+}
+body .contact-info-item .icon svg path{
+    fill: black;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -186,6 +193,7 @@ ul {
 .shadow-dark {
     box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
 }
+
 
 /* Aside */
 
@@ -624,6 +632,19 @@ h3.my-profession {
     color: var(--text-black-700);
 }
 
+.about .about-content .timeline .timeline-top {
+    display: flex;
+    flex-direction: row;
+}
+.about .about-content .timeline .timeline-top .timeline-title {
+    margin-left: 1rem;
+}
+
+.about .about-content .timeline .timeline-top img {
+    height: 30px;
+    width: 30px;
+}
+
 /* Services */
 
 .service .container {
@@ -682,7 +703,7 @@ h3.my-profession {
     background-color: var(--skin-color);
 }
 .service .service-item .service-item-inner:hover .icon .fa {
-    transform: scale(62.5%);
+    transform: scale(62.5%) rotate(360deg);
     color: #fff;
 }
 
@@ -832,6 +853,11 @@ h3.my-profession {
     height: 80%;
 }
 
+.contact-info-item .icon svg {
+    width: 60%;
+    height: 60%;
+}
+
 .contact-info-item .contact-info-card {
     position: absolute;
     top: 0;
@@ -919,7 +945,18 @@ h3.my-profession {
 }
 
 .contact .contact-form .form-item .form-control:focus {
-    box-shadow: 0 0 20px var(--skin-color);
+    box-shadow: 0 0 40px var(--skin-color);
+}
+.contact .contact-form .form-submit {
+    display: flex;
+    justify-content: center;
+}
+.contact .contact-form .form-next{
+    display: none;
+    max-width: 100%;
+    justify-content: center;
+    color: var(--skin-color);
+    font-weight: bold;
 }
 
 .contact .contact-form .form-item textarea.form-control {
