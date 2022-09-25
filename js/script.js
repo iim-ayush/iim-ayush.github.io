@@ -126,7 +126,8 @@ else {
 var submitted = false;
 const gform = document.querySelector('#gform')
 const contact_form = document.querySelector('.contact-form')
-gform.addEventListener('submit', function(e) {
+gform.addEventListener('submit', function() {
+    gform.reset()
     contact_form.classList.add('active-display')
     setTimeout(() => {
         contact_form.classList.add('active')
@@ -152,29 +153,43 @@ for(let i = 0; i < inputs.length; i++) {
     const input = inputs[i]
     const cross = crosses[i]
     const form_item = form_items[i]
-    input.addEventListener('input', () => {
-        if(input.value.length !== 0 && !input.hasAttribute('cross_fired')){
-            form_item.classList.add('active-display')
-            setTimeout(() => {
-                form_item.classList.add('active')
-            }, 20)
-            input.setAttribute('cross_fired', true)
-        }
-        else if(input.value.length === 0 && input.hasAttribute('cross_fired')){
-            form_item.classList.remove('active')
-            setTimeout(() => {
-                form_item.classList.remove('active-display')
-            }, 500)
-            input.removeAttribute('cross_fired')
-        }
-    })
+    input.addEventListener('input', () => OnInput(input, form_item))
+
+    input.addEventListener('change', () => OnChange(input))
 
     cross.addEventListener('click', () => {
         input.value = ""
+        OnInput(input, form_item)
+        OnChange(input)
+    })
+}
+
+gform.addEventListener('reset', () => crosses.forEach((cross) => cross.click()))
+
+function OnInput(input, form_item) {
+    if(input.value.length !== 0 && !input.hasAttribute('cross_fired')){
+        form_item.classList.add('active-display')
+        setTimeout(() => {
+            form_item.classList.add('active')
+        }, 20)
+        input.setAttribute('cross_fired', true)
+    }
+    else if(input.value.length === 0 && input.hasAttribute('cross_fired')){
         form_item.classList.remove('active')
         setTimeout(() => {
             form_item.classList.remove('active-display')
         }, 500)
         input.removeAttribute('cross_fired')
-    })
+    }
+}
+
+function OnChange(input) {
+    if(input.value.length !== 0) {
+        input.style.setProperty('background-color', "var(--skin-color)")
+        input.style.setProperty('border-color', "var(--skin-color)")
+    }
+    else if(input.value.length === 0) {
+        input.style.setProperty('background-color', "var(--bg-black-100)")
+        input.style.setProperty('border-color', "var(--bg-black-50)")
+    }
 }
