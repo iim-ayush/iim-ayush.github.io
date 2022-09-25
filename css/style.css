@@ -1011,6 +1011,11 @@ h3.my-profession {
     transition: all 0.5s ease;
 }
 
+.contact .contact-form .form-item .form-control::placeholder {
+    color: var(--cross-color);
+    opacity: 0.45;
+}
+
 .contact .contact-form .form-item .form-control:focus {
     box-shadow: 0 0 40px var(--skin-color);
 }
