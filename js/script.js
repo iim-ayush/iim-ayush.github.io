@@ -127,9 +127,54 @@ var submitted = false;
 const gform = document.querySelector('#gform')
 const contact_form = document.querySelector('.contact-form')
 gform.addEventListener('submit', function(e) {
-    contact_form.classList.add('active')
+    contact_form.classList.add('active-display')
+    setTimeout(() => {
+        contact_form.classList.add('active')
+    }, 20)
 });
 const hidden_iframe = document.querySelector('#hidden_iframe')
 hidden_iframe.addEventListener('onload', () => {
     if(submitted) {}
 })
+const response_button = document.querySelector('.form-next button')
+response_button.addEventListener('click', () => {
+    contact_form.classList.remove('active-display')
+    setTimeout(() => {
+        contact_form.classList.remove('active')
+    }, 20)
+})
+
+// FADE Cross Animation
+const inputs = document.querySelectorAll('[id^=entry]')
+const form_items = document.querySelectorAll('.form-item')
+const crosses = document.querySelectorAll('.form-cross')
+for(let i = 0; i < inputs.length; i++) {
+    const input = inputs[i]
+    const cross = crosses[i]
+    const form_item = form_items[i]
+    input.addEventListener('input', () => {
+        if(input.value.length !== 0 && !input.hasAttribute('cross_fired')){
+            form_item.classList.add('active-display')
+            setTimeout(() => {
+                form_item.classList.add('active')
+            }, 20)
+            input.setAttribute('cross_fired', true)
+        }
+        else if(input.value.length === 0 && input.hasAttribute('cross_fired')){
+            form_item.classList.remove('active')
+            setTimeout(() => {
+                form_item.classList.remove('active-display')
+            }, 500)
+            input.removeAttribute('cross_fired')
+        }
+    })
+
+    cross.addEventListener('click', () => {
+        input.value = ""
+        form_item.classList.remove('active')
+        setTimeout(() => {
+            form_item.classList.remove('active-display')
+        }, 500)
+        input.removeAttribute('cross_fired')
+    })
+}
