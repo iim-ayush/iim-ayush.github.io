@@ -127,7 +127,6 @@ var submitted = false;
 const gform = document.querySelector('#gform')
 const contact_form = document.querySelector('.contact-form')
 gform.addEventListener('submit', function() {
-    gform.reset()
     contact_form.classList.add('active-display')
     setTimeout(() => {
         contact_form.classList.add('active')
@@ -139,6 +138,7 @@ hidden_iframe.addEventListener('onload', () => {
 })
 const response_button = document.querySelector('.form-next button')
 response_button.addEventListener('click', () => {
+    gform.reset()
     contact_form.classList.remove('active-display')
     setTimeout(() => {
         contact_form.classList.remove('active')
