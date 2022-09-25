@@ -951,12 +951,25 @@ h3.my-profession {
     display: flex;
     justify-content: center;
 }
-.contact .contact-form .form-next{
+
+.contact .contact-form.active #gform {
     display: none;
+}
+
+.contact .contact-form .form-next{
+    opacity: 0;
+    visibility: hidden;
     max-width: 100%;
+    display: flex;
     justify-content: center;
     color: var(--skin-color);
     font-weight: bold;
+    transition: opacity 1s ease;
+}
+
+.contact .contact-form.active .form-next{
+    opacity: 1;
+    visibility: visible;
 }
 
 .contact .contact-form .form-item textarea.form-control {

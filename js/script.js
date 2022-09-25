@@ -125,10 +125,9 @@ else {
 // Form Submit
 var submitted = false;
 const gform = document.querySelector('#gform')
-const gform_next = document.querySelector('.form-next')
+const contact_form = document.querySelector('.contact-form')
 gform.addEventListener('submit', function(e) {
-    gform.style.display = "none"
-    gform_next.style.display = "flex"
+    contact_form.classList.add('active')
 });
 const hidden_iframe = document.querySelector('#hidden_iframe')
 hidden_iframe.addEventListener('onload', () => {
