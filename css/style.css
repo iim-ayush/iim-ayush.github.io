@@ -121,7 +121,7 @@ ul {
 
 .container {
     padding-top: 60px;
-    padding-bottom: 70px;
+    padding-bottom: 60px;
     max-width: 1100px;
     width: 100%;
     margin: auto;
@@ -886,15 +886,22 @@ h3.my-profession {
     display: block;
 }
 
-.contact-info-item.active ~ .overlay {
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--overlay);
+    transition: all 0.6s ease;
+    background-color: transparent;
     opacity: 0.85;
     z-index: 100;
+    pointer-events: none;
+}
+
+.contact-info-item.active ~ .overlay {
+    pointer-events: fill;
+    background-color: var(--overlay);
 }
 
 .contact-info-item.active {
