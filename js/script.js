@@ -168,17 +168,11 @@ gform.addEventListener('reset', () => crosses.forEach((cross) => cross.click()))
 
 function OnInput(input, form_item) {
     if(input.value.length !== 0 && !input.hasAttribute('cross_fired')){
-        form_item.classList.add('active-display')
-        setTimeout(() => {
-            form_item.classList.add('active')
-        }, 20)
+        form_item.classList.add('active')
         input.setAttribute('cross_fired', true)
     }
     else if(input.value.length === 0 && input.hasAttribute('cross_fired')){
         form_item.classList.remove('active')
-        setTimeout(() => {
-            form_item.classList.remove('active-display')
-        }, 500)
         input.removeAttribute('cross_fired')
     }
 }

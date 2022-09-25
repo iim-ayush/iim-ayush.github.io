@@ -900,7 +900,7 @@ h3.my-profession {
 }
 
 .contact-info-item.active ~ .overlay {
-    pointer-events: fill;
+    pointer-events: auto;
     background-color: var(--overlay);
 }
 
@@ -946,15 +946,14 @@ h3.my-profession {
 }
 
 .contact .contact-form .form-item.active .form-cross {
+    visibility: visible;
+    pointer-events: auto;
     opacity: 1;
 }
 
-.contact .contact-form .form-item.active-display .form-cross {
-    display: block;
-}
 
 .contact .contact-form .form-item .form-cross {
-    display: none;
+    display: block;
     opacity: 0;
     position: absolute;
     top: 50%;
@@ -963,7 +962,9 @@ h3.my-profession {
     width: 20px;
     transform: translateY(-50%);
     cursor: pointer;
-    transition: opacity 0.5s ease;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .contact .contact-form .form-item .form-cross::before {
