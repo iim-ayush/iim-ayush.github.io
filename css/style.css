@@ -904,6 +904,10 @@ h3.my-profession {
     background-color: var(--overlay);
 }
 
+.contact-info-item.active .icon {
+    transform: rotate(360deg);
+}
+
 .contact-info-item.active {
     z-index: 101;
 }
